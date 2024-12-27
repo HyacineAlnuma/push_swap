@@ -10,6 +10,7 @@ _YELLOW			= \033[0;33m
 _BLUE			= \033[0;34m
 _PURPLE			= \033[0;35m
 _CYAN			= \033[0;36m
+_BOLD			= \e[1m
 
 # ------ VARIABLES ------
 
@@ -52,7 +53,7 @@ all: 			libft $(NAME)
 $(NAME): 		$(SRC_ALL) Makefile $(HEADERS)
 				@$(CC) $(CFLAGS) -I $(P_INC) $(SRC_ALL) $(LIBFT) -o $@
 				@echo "$(_YELLOW)Compiling $(SRC_ALL)$(_END)"
-				@echo "$(_GREEN)$(NAME) compiled!$(_END)"
+				@echo "$(_GREEN)$(_BOLD)$(NAME) compiled!$(_END)"
 
 libft:		
 				@$(MAKE) -C $(P_LIB) --no-print-directory
@@ -74,4 +75,3 @@ fclean:
 re:
 				@$(MAKE) fclean --no-print-directory
 				@$(MAKE) all --no-print-directory
-				@echo "$(_CYAN)$(NAME) rebuilt!$(_END)"
