@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 14:41:10 by halnuma           #+#    #+#             */
-/*   Updated: 2024/12/27 15:40:37 by halnuma          ###   ########.fr       */
+/*   Created: 2024/12/27 12:16:50 by halnuma           #+#    #+#             */
+/*   Updated: 2025/01/10 10:56:59 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (!lst)
-		return ;
-	if (del)
-		(*del)(lst->content);
-	else
-		free(lst->content);
-	free(lst);
-}
+void	reverse_rotate(t_list **list);
+void	rotate(t_list **list);
+void	push(t_list **a, t_list **b);
+void	swap(t_list **list);
+void	print_stack(t_list **stack);
+void	free_stacks(t_list **stack_a, t_list **stack_b);
+void	push_swap(t_list **stack_a, t_list **stack_b);
+
+#endif

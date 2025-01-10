@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/12/27 12:16:11 by halnuma           #+#    #+#              #
+#    Updated: 2025/01/10 10:54:03 by halnuma          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 .PHONY: all clean fclean re libft
 
 # ------ COLORS ------
@@ -14,7 +26,7 @@ _BOLD			= \e[1m
 
 # ------ VARIABLES ------
 
-NAME			= 42SP
+NAME			= push_swap
 CC				= cc
 AR				= ar -rcs
 CFLAGS			= -Wall -Wextra -Werror
@@ -29,11 +41,11 @@ P_LIB			= libft/
 
 # ------ FILES ------
 
-MAIN			= main
+MAIN			= main				push_swap
 
-UTILS			=
+UTILS			= instructions		stack_utils
 
-HDR_SRC			= libft
+HDR_SRC			= libft				push_swap
 
 SRC_MAIN		= $(addprefix $(P_SRC), $(addsuffix .c, $(MAIN)))
 SRC_UTILS		= $(addprefix $(P_UTILS), $(addsuffix .c, $(UTILS)))
