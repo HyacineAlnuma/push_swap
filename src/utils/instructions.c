@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:16:27 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/08 10:34:22 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/17 11:41:44 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	swap(t_list **stack)
 {
 	int	*temp;
 
+	if (!(*stack) || !((*stack)->next))
+		return ;
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
@@ -40,7 +42,7 @@ void	rotate(t_list **stack)
 	t_list	*first;
 	t_list	*last;
 
-	if (!(*stack))
+	if (!(*stack) || !((*stack)->next))
 		return ;
 	first = (*stack)->next;
 	last = *stack;
@@ -55,7 +57,7 @@ void	reverse_rotate(t_list **stack)
 	t_list	*second;
 	t_list	*i;
 
-	if (!(*stack))
+	if (!(*stack) || !((*stack)->next))
 		return ;
 	last = ft_lstlast(*stack);
 	second = *stack;

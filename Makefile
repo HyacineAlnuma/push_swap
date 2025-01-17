@@ -6,7 +6,7 @@
 #    By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/27 12:16:11 by halnuma           #+#    #+#              #
-#    Updated: 2025/01/10 10:54:03 by halnuma          ###   ########.fr        #
+#    Updated: 2025/01/17 10:13:18 by halnuma          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ LIBFT			= $(P_LIB)libft.a
 
 all: 			libft $(NAME)
 
-$(NAME): 		$(SRC_ALL) Makefile $(HEADERS)
+$(NAME): 		$(SRC_ALL) Makefile $(HEADERS) $(LIBFT)
 				@$(CC) $(CFLAGS) -I $(P_INC) $(SRC_ALL) $(LIBFT) -o $@
 				@echo "$(_YELLOW)Compiling $(SRC_ALL)$(_END)"
 				@echo "$(_GREEN)$(_BOLD)$(NAME) compiled!$(_END)"
