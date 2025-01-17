@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:16:15 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/17 15:04:13 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:10:16 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void check_duplicates(t_list **stack)
 
 /*
 	Pour check si > INT MAX, faire un atol (just atoi sauf aue tu stockes dans un long),
-	si ce long > INT_MAX return error, mais il faut d'abord verifier su nbr_len > 10(jsplus
+	si ce long > INT_MAX return error, mais il faut d'abord verifier si nbr_len > 10(jsplus
 	combine c'est mais le nombre de chiffres dans INT MAX) return 0 sinon envoie dans atol.
 	Comme ca qlq soit le nombre que tu envoies, si celui ci > INT MAX -> error
 */
