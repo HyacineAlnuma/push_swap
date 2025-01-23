@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:16:15 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/17 15:10:16 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:23:31 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int ac, char **av)
 	//print_stack(stack_a);
 	check_duplicates(stack_a);
 	push_swap(stack_a, stack_b);
-	// print_stack(stack_a);
+	//print_stack(stack_a);
 	// ft_printf("//////\n");
 	// print_stack(stack_b);
 	free_stacks(stack_a, stack_b);
