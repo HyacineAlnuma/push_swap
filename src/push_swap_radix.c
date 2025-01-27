@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap3.c                                       :+:      :+:    :+:   */
+/*   push_swap_radix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:51:46 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/23 13:31:47 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/27 16:03:51 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 
 	lst_size_a = ft_lstsize(*stack_a);
 	i = 0;
-	while (i < 32  && !is_sorted(stack_a))
+	while (i < 32 && !is_sorted(stack_a))
 	{
 		j = 0;
 		while (j < lst_size_a && !is_sorted(stack_a))

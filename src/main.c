@@ -6,110 +6,61 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:16:15 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/23 13:23:31 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:48:05 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
-
-void	split_args(char *args, t_list **stack_a)
-{
-	char **splited;
-	int		i;
-	int		*value;
-
-	i = 0;
-	splited = ft_split(args, ' ');
-	while (splited[i])
-	{
-		//ft_printf("%s\n", splited[i]);
-		value = (int *)malloc(sizeof(int));
-		*value = ft_atoi(splited[i]);
-		ft_lstadd_back(stack_a, ft_lstnew(value));
-		i++;
-	}
-	//return (stack_a);
-}
-
-void check_duplicates(t_list **stack)
-{
-	int		value;
-	t_list	*ptr;
-	t_list	*ptr2;
-
-	ptr = *stack;
-	while(ptr)
-	{
-		if (ptr->next)
-		{
-			ptr2 = ptr->next;
-			value = *(int *)ptr->content;
-			while (ptr2)
-			{
-				if (*(int *)ptr2->content == value)
-				{
-					ft_putstr_fd("Error\n", 2);
-					exit(EXIT_FAILURE);
-				}
-				ptr2 = ptr2->next;
-			}
-		}
-		ptr = ptr->next;
-	}
-}
-
-/*
-	Pour check si > INT MAX, faire un atol (just atoi sauf aue tu stockes dans un long),
-	si ce long > INT_MAX return error, mais il faut d'abord verifier si nbr_len > 10(jsplus
-	combine c'est mais le nombre de chiffres dans INT MAX) return 0 sinon envoie dans atol.
-	Comme ca qlq soit le nombre que tu envoies, si celui ci > INT MAX -> error
-*/
 
 int	main(int ac, char **av)
 {
-	int		i;
 	t_list	**stack_a;
-	t_list	**stack_b;
-	int		*value;
 
-	i = 1;
 	stack_a = (t_list **)ft_calloc(1, sizeof(t_list *));
-	stack_b = (t_list **)ft_calloc(1, sizeof(t_list *));
+	if (!stack_a)
+		return (0);
 	if (ac == 2)
 	{
-		split_args(av[1], stack_a);
-		//print_stack(stack_a);
+		if (!split_args(av[1], stack_a))
+		{
+			ft_putstr_fd("Error", 2);
+			free_stacks(stack_a, NULL);
+			return (0);
+		}
 	}
 	else if (ac > 2)
 	{
-		while (av[i])
+		if (!fill_stack(stack_a, av))
 		{
-			value = (int *)malloc(sizeof(int));
-			*value = ft_atoi(av[i]);
-			ft_lstadd_back(stack_a, ft_lstnew(value));
-			i++;
+			ft_putstr_fd("Error", 2);
+			free_stacks(stack_a, NULL);
+			return (0);
 		}
-		//i--;
-		// while (i > 0)
-		// {
-		// 	value = (int *)malloc(sizeof(int));
-		// 	*value = ft_atoi(av[i]);
-		// 	ft_lstadd_back(stack_b, ft_lstnew(value));
-		// 	i--;
-		// }
 	}
-	// ft_printf("--------------------\n");
-	// print_stack(stack_a);
-	// ft_printf("////\n");
-	// print_stack(stack_b);
-	// ft_printf("--------------------\n");
-	//print_stack(stack_a);
-	check_duplicates(stack_a);
-	push_swap(stack_a, stack_b);
-	//print_stack(stack_a);
-	// ft_printf("//////\n");
-	// print_stack(stack_b);
-	free_stacks(stack_a, stack_b);
+	push_swap(stack_a);
 	return (0);
+}
+
+void	push_swap(t_list **stack_a)
+{
+	int		stack_size;
+	t_list	**stack_b;
+
+	stack_b = (t_list **)ft_calloc(1, sizeof(t_list *));
+	if (!stack_b)
+	{
+		free_stacks(stack_a, NULL);
+		ft_putstr_fd("Error", 2);
+		return ;
+	}
+	check_duplicates(stack_a);
+	stack_size = ft_lstsize(*stack_a);
+	if (stack_size == 1 || stack_size == 0 || is_sorted(stack_a))
+	{
+		free_stacks(stack_a, stack_b);
+		return ;
+	}
+	else
+		sort_stack(stack_a, stack_b, stack_size);
+	free_stacks(stack_a, stack_b);
 }

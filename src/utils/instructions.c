@@ -6,14 +6,13 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:16:27 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/17 11:41:44 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/27 13:26:54 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
 
-void	swap(t_list **stack)
+void	swap(t_list **stack, char c)
 {
 	int	*temp;
 
@@ -22,9 +21,13 @@ void	swap(t_list **stack)
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
+	if (c == 'a')
+		ft_printf("sa\n");
+	else
+		ft_printf("sb\n");
 }
 
-void	push(t_list **a, t_list **b)
+void	push(t_list **a, t_list **b, char c)
 {
 	t_list	*first_a;
 	t_list	*first_b;
@@ -35,9 +38,13 @@ void	push(t_list **a, t_list **b)
 	first_b = first_a->next;
 	*b = first_b;
 	ft_lstadd_front(a, first_a);
+	if (c == 'a')
+		ft_printf("pa\n");
+	else
+		ft_printf("pb\n");
 }
 
-void	rotate(t_list **stack)
+void	rotate(t_list **stack, char c)
 {
 	t_list	*first;
 	t_list	*last;
@@ -49,9 +56,13 @@ void	rotate(t_list **stack)
 	ft_lstadd_back(stack, last);
 	last->next = NULL;
 	*stack = first;
+	if (c == 'a')
+		ft_printf("ra\n");
+	else if (c == 'b')
+		ft_printf("rb\n");
 }
 
-void	reverse_rotate(t_list **stack)
+void	reverse_rotate(t_list **stack, char c)
 {
 	t_list	*last;
 	t_list	*second;
@@ -70,4 +81,8 @@ void	reverse_rotate(t_list **stack)
 			i->next = NULL;
 		i = i->next;
 	}
+	if (c == 'a')
+		ft_printf("rra\n");
+	else if (c == 'b')
+		ft_printf("rrb\n");
 }
