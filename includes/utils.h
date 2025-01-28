@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:23:21 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/27 14:08:30 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/28 09:48:43 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			fill_stack(t_list **stack, char **values);
 
 // ----- ERROR_CHECKING ----- //
 
-void		check_duplicates(t_list **stack);
+void		check_duplicates(t_list **stack_a, t_list **stack_b);
 long long	ft_atoll(const char *nptr);
 int			check_digit(int c);
 int			check_number(char *number);

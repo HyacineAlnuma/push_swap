@@ -6,19 +6,19 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:20:16 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/27 13:47:38 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/28 10:18:05 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_duplicates(t_list **stack)
+void	check_duplicates(t_list **stack_a, t_list **stack_b)
 {
 	int		value;
 	t_list	*ptr;
 	t_list	*ptr2;
 
-	ptr = *stack;
+	ptr = *stack_a;
 	while (ptr)
 	{
 		if (ptr->next)
@@ -29,6 +29,7 @@ void	check_duplicates(t_list **stack)
 			{
 				if (*(int *)ptr2->content == value)
 				{
+					free_stacks(stack_a, stack_b);
 					ft_putstr_fd("Error\n", 2);
 					exit(EXIT_FAILURE);
 				}
@@ -66,22 +67,28 @@ long long	ft_atoll(const char *nptr)
 
 int	check_digit(int c)
 {
-	if ((c < '0' || c > '9') && c != '-')
-	{
-		return (0);
-	}
-	return (1);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else if (c == '-')
+		return (2);
+	return (0);
 }
 
 int	check_number(char *number)
 {
 	int	i;
+	int	sign;
 
 	i = 0;
+	sign = 0;
 	while (number[i])
 	{
 		if (!check_digit(number[i]))
 			return (0);
+		else if (check_digit(number[i]) == 2 && sign)
+			return (0);
+		else if (check_digit(number[i]) == 2 && !sign)
+			sign = 1;
 		i++;
 	}
 	if (i > 12)

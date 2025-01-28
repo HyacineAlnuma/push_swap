@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 14:14:19 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/27 14:11:04 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/28 09:29:55 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,18 @@ void	print_stack(t_list **stack)
 
 void	free_stacks(t_list **stack_a, t_list **stack_b)
 {
-	if (*stack_a)
-		ft_lstclear(stack_a, NULL);
-	if (*stack_b)
-		ft_lstclear(stack_b, NULL);
 	if (stack_a)
+	{
+		if (*stack_a)
+			ft_lstclear(stack_a, NULL);
 		free(stack_a);
+	}
 	if (stack_b)
+	{
+		if (*stack_b)
+			ft_lstclear(stack_b, NULL);
 		free(stack_b);
+	}
 }
 
 int	find_smallest_index(t_list **stack)

@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:51:48 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/27 16:03:24 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/28 10:29:33 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	fill_stack_b(t_list **stack_a, t_list **stack_b)
 	int		value;
 	int		i;
 
-	if (*(int *)(*stack_b)->content > *(int *)(*stack_b)->next->content)
-		rotate(stack_b, 'b');
 	while (*stack_a)
 	{
 		cheapest_index = find_cheapest(stack_a, stack_b);

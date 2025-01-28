@@ -6,7 +6,7 @@
 /*   By: halnuma <halnuma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 12:16:15 by halnuma           #+#    #+#             */
-/*   Updated: 2025/01/27 15:48:05 by halnuma          ###   ########.fr       */
+/*   Updated: 2025/01/28 10:19:53 by halnuma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	{
 		if (!split_args(av[1], stack_a))
 		{
-			ft_putstr_fd("Error", 2);
+			ft_putstr_fd("Error\n", 2);
 			free_stacks(stack_a, NULL);
 			return (0);
 		}
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	{
 		if (!fill_stack(stack_a, av))
 		{
-			ft_putstr_fd("Error", 2);
+			ft_putstr_fd("Error\n", 2);
 			free_stacks(stack_a, NULL);
 			return (0);
 		}
@@ -50,10 +50,10 @@ void	push_swap(t_list **stack_a)
 	if (!stack_b)
 	{
 		free_stacks(stack_a, NULL);
-		ft_putstr_fd("Error", 2);
+		ft_putstr_fd("Error\n", 2);
 		return ;
 	}
-	check_duplicates(stack_a);
+	check_duplicates(stack_a, stack_b);
 	stack_size = ft_lstsize(*stack_a);
 	if (stack_size == 1 || stack_size == 0 || is_sorted(stack_a))
 	{
